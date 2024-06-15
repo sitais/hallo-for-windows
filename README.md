@@ -45,29 +45,30 @@ https://github.com/fudan-generative-vision/hallo/assets/17402682/294e78ef-c60d-4
 - **`2024/06/15`**: 🎉🎉🎉 Release the first version on [GitHub](https://github.com/fudan-generative-vision/hallo).
 - **`2024/06/15`**: ✨✨✨ Release some images and audios for inference testing on [Huggingface](https://huggingface.co/datasets/fudan-generative-ai/hallo_inference_samples).
 
-# Installation
+# ⚒️ Installation
 
-- System requirement: Ubuntu 20.04/Ubuntu 22.04, Cuda 12.1
-- Tested GPUs: A100
+prerequisites: `3.11>=python>=3.8`, `CUDA>=11.3` and `ffmpeg`.
 
-Create conda environment:
+Python and Git:
 
-```bash
-  conda create -n hallo python=3.10
-  conda activate hallo
+- Python 3.10.11: https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe
+
+- Install [ffmpeg](https://ffmpeg.org/) for your operating system
+  (https://www.geeksforgeeks.org/how-to-install-ffmpeg-on-windows/)
+  
+  notice:step 4 use windows system Set Enviroment Path.
+
+Give unrestricted script access to powershell so venv can work:
+
+- Open an administrator powershell window
+- Type `Set-ExecutionPolicy Unrestricted` and answer A
+- Close admin powershell window
+
+```
+git clone --recurse-submodules https://github.com/sdbds/hallo-for-windows/
 ```
 
-Install packages with `pip`
-
-```bash
-  pip install -r requirements.txt
-  pip install .
-```
-
-Besides, ffmpeg is also need:
-```bash
-  apt-get install ffmpeg
-```
+Install with Powershell run `install.ps1` or `install-cn.ps1`(for Chinese)
 
 # Inference
 
@@ -76,27 +77,31 @@ The inference entrypoint script is `scripts/inference.py`. Before testing your c
 1. [Download all required pretrained models](#download-pretrained-models).
 2. [Run inference](#run-inference).
 
-## Download pretrained models
+or Powershell run with `run_inference.ps1`
 
-You can easily get all pretrained models required by inference from our [HuggingFace repo](https://huggingface.co/fudan-generative-ai/hallo).
+## No need Download models manually
 
-Clone the the pretrained models into `${PROJECT_ROOT}/pretrained_models` directory by cmd below:
+~~## Download pretrained models~~~
 
-```shell
-git lfs install
-git clone https://huggingface.co/fudan-generative-ai/hallo pretrained_models
-```
+~~You can easily get all pretrained models required by inference from our [HuggingFace repo](https://huggingface.co/fudan-generative-ai/hallo).~~
 
-Or you can download them separately from their source repo:
+~~Clone the the pretrained models into `${PROJECT_ROOT}/pretrained_models` directory by cmd below:~~
 
-- [hallo](https://huggingface.co/fudan-generative-ai/hallo/tree/main/hallo): Our checkpoints consist of denoising UNet, face locator, image & audio proj.
-- [audio_separator](https://huggingface.co/huangjackson/Kim_Vocal_2): Kim\_Vocal\_2 MDX-Net vocal removal model by [KimberleyJensen](https://github.com/KimberleyJensen). (_Thanks to runwayml_)
-- [insightface](https://github.com/deepinsight/insightface/tree/master/python-package#model-zoo): 2D and 3D Face Analysis placed into `pretrained_models/face_analysis/models/`. (_Thanks to deepinsight_)
-- [face landmarker](https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task): Face detection & mesh model from [mediapipe](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker#models) placed into `pretrained_models/face_analysis/models`.
-- [motion module](https://github.com/guoyww/AnimateDiff/blob/main/README.md#202309-animatediff-v2): motion module from [AnimateDiff](https://github.com/guoyww/AnimateDiff). (_Thanks to guoyww_).
-- [sd-vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse): Weights are intended to be used with the diffusers library. (_Thanks to stablilityai_)
-- [StableDiffusion V1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5): Initialized and fine-tuned from Stable-Diffusion-v1-2. (_Thanks to runwayml_)
-- [wav2vec](https://huggingface.co/facebook/wav2vec2-base-960h): wav audio to vector model from [Facebook](https://huggingface.co/facebook/wav2vec2-base-960h).
+~~```shell~~
+~~git lfs install~~
+~~git clone https://huggingface.co/fudan-generative-ai/hallo pretrained_models~~
+~~```~~
+
+~~Or you can download them separately from their source repo:~~
+
+~~- [hallo](https://huggingface.co/fudan-generative-ai/hallo/tree/main/hallo): Our checkpoints consist of denoising UNet, face locator, image & audio proj.~~
+~~- [audio_separator](https://huggingface.co/huangjackson/Kim_Vocal_2): Kim\_Vocal\_2 MDX-Net vocal removal model by [KimberleyJensen](https://github.com/KimberleyJensen). (_Thanks to runwayml_)~~
+~~- [insightface](https://github.com/deepinsight/insightface/tree/master/python-package#model-zoo): 2D and 3D Face Analysis placed into `pretrained_models/face_analysis/models/`. (_Thanks to deepinsight_)~~
+~~- [face landmarker](https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task): Face detection & mesh model from [mediapipe](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker#models) placed into `pretrained_models/face_analysis/models`.~~
+~~- [motion module](https://github.com/guoyww/AnimateDiff/blob/main/README.md#202309-animatediff-v2): motion module from [AnimateDiff](https://github.com/guoyww/AnimateDiff). (_Thanks to guoyww_).~~
+~~- [sd-vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse): Weights are intended to be used with the diffusers library. (_Thanks to stablilityai_)~~
+~~- [StableDiffusion V1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5): Initialized and fine-tuned from Stable-Diffusion-v1-2. (_Thanks to runwayml_)
+~~- [wav2vec](https://huggingface.co/facebook/wav2vec2-base-960h): wav audio to vector model from [Facebook](https://huggingface.co/facebook/wav2vec2-base-960h).~~
 
 Finally, these pretrained models should be organized as follows:
 
@@ -169,6 +174,10 @@ options:
   --face_expand_ratio FACE_EXPAND_RATIO
                         face region
 ```
+
+or Powershell run with `run_inference.ps1`
+
+you can edit `run_inference.ps1` to change some configs.
 
 # Roadmap
 
