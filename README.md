@@ -81,7 +81,7 @@ or Powershell run with `run_inference.ps1`
 
 ## No need Download models manually
 
-~~## Download pretrained models~~~
+~~## Download pretrained models~~
 
 ~~You can easily get all pretrained models required by inference from our [HuggingFace repo](https://huggingface.co/fudan-generative-ai/hallo).~~
 
