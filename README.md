@@ -204,7 +204,7 @@ You can edit `run_inference.ps1` to change some configs.
 | :----: | :---------------------------------------------------------------------------------------------------- | :--------: |
 |   ✅   | **[Inference source code meet everyone on GitHub](https://github.com/fudan-generative-vision/hallo)** | 2024-06-15 |
 |   ✅   | **[Pretrained models on Huggingface](https://huggingface.co/fudan-generative-ai/hallo)**              | 2024-06-15 |
-| 🚀🚀🚀 | **[Traning: data preparation and training scripts]()**                                                | 2024-06-25 |
+| 🚀🚀🚀 | **[Training: data preparation and training scripts]()**                                                | 2024-06-25 |
 | 🚀🚀🚀 | **[Optimize inference performance in Mandarin]()**                                                    |    TBD     |
 
 # Citation
